@@ -49,7 +49,14 @@ class ProgramPlayer(Player):
         }
     
     def choice_obj(self,fourniture,lines):
-        return self.choice_random_obj(fourniture)
+        if len(lines) >= 2:
+            #Start the tracking
+            print('Tracking...')
+            phrase = "".join(lines).replace("\n","")
+            ch_old = frequence(phrase)
+            return self.track_utils[ch_old]
+        else:
+            return self.choice_random_obj(fourniture)
     
     def choice_random_obj(self,fourn):
         return choice(fourn)
